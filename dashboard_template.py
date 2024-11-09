@@ -239,6 +239,35 @@ elif st.session_state.page_selection == "data_cleaning":
     missing_values = phonesearch_df.isnull().sum()
     st.write(missing_values[missing_values > 0])
 
+    st.markdown("""
+
+    Since the distribution of Phone Data in our dataset is **not balanced** and there are **1,474 null values** in our dataset. Some columns, like product_original_price and product_availability, unit_price, unit_count, and coupon_text have a significant number of missing values.
+
+    Irrelevant data columns will also be dropped:
+    """)
+
+    st.code("""
+
+    phonesearch_df = phonesearch_df.drop(columns=['product_url', 'product_photo'])
+    
+    """)
+
+    # Remove currency symbols and convert columns to numeric type
+    st.code(""" 
+    
+    phonesearch_df['product_price'] = pd.to_numeric(phoneData_df['product_price'].str.replace('[\$,]', '', regex=True))
+    phonesearch_df['product_original_price'] = pd.to_numeric(phoneData_df['product_original_price'].str.replace('[\$,]', '', regex=True))
+    
+    """)
+
+    # Median
+    st.code(""" 
+
+    phonesearch_df['product_price'].fillna(phonesearch_df['product_price'].median(), inplace=True)
+    phonesearch_df['product_original_price'].fillna(phonesearch_df['product_original_price'].median(), inplace=True)
+    
+    """)
+
 # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
