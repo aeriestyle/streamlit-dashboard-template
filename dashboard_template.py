@@ -592,8 +592,10 @@ This code defines a function extract_numeric that targets the sales volume data 
      
     """)
 
+  # Display Feature Importance
+    st.subheader("Feature Importance")
+
     st.code("""
-#Feature Importance
 
 random_forest_feature_importance = pd.Series(rfr_model.feature_importances_, index=X_train_reg.columns)
 
@@ -602,12 +604,52 @@ random_forest_feature_importance
     feature_importance = pd.Series(rfr_model.feature_importances_, index=X_train_reg.columns)
 
     st.write(feature_importance)
-    # Display Feature Importance
-    st.subheader("Feature Importance")
+    st.markdown("""
+The feature importance scores are extracted from the trained Random Forest model, targeting the columns in X_train_reg. These scores indicate the relative importance of each feature in predicting the sales volume, helping identify which features most significantly impact the model's decisions.
+     
+    """)
+    st.subheader("Random Forest Regressor Feature Importance")
     st.bar_chart(feature_importance)
 
+    st.markdown("""
+This visualizes the feature importance scores using a bar plot, providing a clear representation of which features contribute most significantly to predicting sales volume. This insight is valuable for understanding the factors that drive sales in the dataset.     
+    """)
 
+    st.subheader("Printing the Random Forest")
+    st.code("""
 
+# Print number of trees made in the Random Forest
+print(f"Number of trees made: {len(rfr_model.estimators_)}")
+""")
+    st.write(f"Number of trees made: {len(rfr_model.estimators_)}")
+
+    st.markdown("""
+This line prints the total number of decision trees created in the Random Forest model, reflecting the model's complexity and its capacity to capture various patterns in the data.    """)
+
+    st.code("""
+
+# Show all trees made
+
+# Set up the dimensions for the plot grid (e.g., 10x10 grid for 100 trees)
+n_estimators = min(len(rfr_model.estimators_), 100)  # limit to 100 trees if there are more
+n_rows = 10
+n_cols = 10
+
+# Create a figure large enough to hold the grid of subplots
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 20), dpi=50)
+
+# Loop through each estimator and plot it
+for i, tree in enumerate(rfr_model.estimators_[:n_estimators]):
+    row = i // n_cols
+    col = i % n_cols
+    ax = axes[row, col]
+    plot_tree(tree, feature_names=X_train_reg.columns, filled=True, rounded=True, ax=ax)
+    ax.set_title(f"Tree {i+1}", fontsize=6)
+    ax.axis('off')  # Turn off axis to reduce clutter
+
+plt.tight_layout()
+plt.show()
+            """)
 
     
     
