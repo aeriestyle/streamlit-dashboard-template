@@ -1,4 +1,4 @@
-# Predicting Sales and Classifying Data using Streamlit
+# Amazon Phone Data Dashboard
 
 A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, **Data Preprocessing**, and **Supervised Machine Learning** to predict "Amazon Choice" products and sales volume from the Phone Search Dataset using **Logistic Regression** and **Random Forest Regressor**.
 
@@ -31,37 +31,28 @@ A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, *
 
 ### 💡 Findings / Insights
 
-
-
-logistic regression to predict the whether aproduct was designated as "Amazon Choice". The random forest regressor used to predict product sales volume, 
-Overview:
-
-
-
-
-
-Through exploratory data analysis and training of two classification models (Logistic Regression and Random Forest Regressor) on the Amazon Phone Data dataset, the key insights and observations are:
+Through exploratory data analysis and training of two classification models (`Logistic Regression` and `Random Forest Regressor`) on the Amazon Phone Data dataset, the key insights and observations are:
 
 ### 1. 📊 **Dataset Characteristics**:
 
 - The dataset captures valuable e-commerce metrics such as product price, ratings, and sales volume.
-Some columns like product_original_price, product_availability, unit_price, and coupon_text had significant missing values, which were either removed or imputed as necessary.
+- Some columns like `product_original_price`, `product_availability`, `unit_price`, and `coupon_text` had significant missing values, which were either removed or imputed as necessary.
 - Feature normalization and encoding allowed us to prepare the dataset for effective modeling.
 
 ### 2. 📝 **Feature Distributions and Separability**:
 
 - Visualizations, including histograms, scatter plots, and pairwise scatter plots, revealed relationships between product prices and star ratings.
-- EDA highlighted that certain features, such as product_price and product_star_rating, have a strong correlation, suggesting potential for feature engineering in future work.
+- EDA highlighted that certain features, such as `product_price` and `product_star_rating`, have a strong correlation, suggesting potential for feature engineering in future work.
 
 ### 3. 📈 **Model Performance (Logistic Regression for Classification)**:
 
-- The Logistic Regression model achieved high accuracy in predicting whether a product was designated as "Amazon Choice." This simple yet effective model was a good fit for the classification task.
+- The **Logistic Regression** model achieved high accuracy in predicting whether a product was designated as "Amazon Choice." This simple yet effective model was a good fit for the classification task.
 - The confusion matrix and classification report further illustrated the model’s effectiveness in classifying the products accurately based on the provided features.
 
 ### 4. 📈 **Model Performance (Random Forest Regressor for Sales Volume Prediction)**:
 
-- The Random Forest Regressor was trained to predict product sales volume, achieving a high R² score on both the training and testing data.
-- Feature importance analysis identified product_price and product_star_rating as the most influential features for predicting sales volume, highlighting how customer preferences may affect sales.
+- The **Random Forest Regressor** was trained to predict product sales volume, achieving a high R² score on both the training and testing data.
+- Feature importance analysis identified `product_price` and `product_star_rating` as the most influential features for predicting sales volume, highlighting how customer preferences may affect sales.
 
 #### **Summing up:**
 
