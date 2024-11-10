@@ -493,7 +493,7 @@ elif st.session_state.page_selection == "machine_learning":
     st.subheader("Random Forest")
     st.markdown("""
 
-    **Random Forest Regressor** is a machine learning algorithm that is used to predict continuous values by *combining multiple decision trees* which is called `"Forest"` wherein each tree is trained independently on different random subset of data and features.
+    **Random Forest Regressor** is it is a machine learning algorithm that is used to predict continuous values by *combining multiple decision trees* which is called `"Forest"` wherein each tree is trained independently on different random subset of data and features.
 
     This process begins with data **splitting** wherein the algorithm selects various random subsets of both the data points and the features to create diverse decision trees.  
 
