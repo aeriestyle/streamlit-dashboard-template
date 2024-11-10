@@ -493,7 +493,7 @@ elif st.session_state.page_selection == "machine_learning":
     st.subheader("Random Forest")
     st.markdown("""
 
-    **Random Forest Regressor** is it is a machine learning algorithm that is used to predict continuous values by *combining multiple decision trees* which is called `"Forest"` wherein each tree is trained independently on different random subset of data and features.
+    **Random Forest Regressor** is a machine learning algorithm that is used to predict continuous values by *combining multiple decision trees* which is called `"Forest"` wherein each tree is trained independently on different random subset of data and features.
 
     This process begins with data **splitting** wherein the algorithm selects various random subsets of both the data points and the features to create diverse decision trees.  
 
@@ -503,12 +503,54 @@ elif st.session_state.page_selection == "machine_learning":
                 
     """) 
     # Access X and y data for Random Forest regression from session state
-    X_train_reg = st.session_state.get['X_train_reg']
-    X_test_reg = st.session_state.get['X_test_reg']
-    y_train_reg = st.session_state.get['5y_train_reg']
-    y_test_reg = st.session_state.get['y_test_reg']
+    X_train_reg = st.session_state.get('X_train_reg')
+    X_test_reg = st.session_state.get('X_test_reg')
+    y_train_reg = st.session_state.get('y_train_reg')
+    y_test_reg = st.session_state.get('y_test_reg')
 
-    if all(data is not None for data in [X_train_class, X_test_class, y_train_class, y_test_class]):
+if all(data is not None for data in [X_train_class, X_test_class, y_train_class, y_test_class]):
+
+    def extract_numeric(value):
+      if isinstance(value, str):
+        numbers = re.findall(r'\d+', value)
+        if numbers:
+            return int(numbers[0])
+        else:
+            return np.nan
+      return value
+
+    y_train_reg = y_train_reg.apply(extract_numeric)
+    y_train_reg = y_train_reg.fillna(y_train_reg.median())
+
+
+    st.code("""# Convert text-based sales volume to numeric by extracting numbers only
+import re
+
+def extract_numeric(value):
+    if isinstance(value, str):
+        numbers = re.findall(r'\d+', value)
+        if numbers:
+            return int(numbers[0])
+        else:
+            return np.nan
+    return value
+
+# Apply the function to the y_train_reg data
+y_train_reg = y_train_reg.apply(extract_numeric)
+
+# Check for NaN values again and fill with the median if necessary
+y_train_reg = y_train_reg.fillna(y_train_reg.median())
+
+# Verify the cleaned data
+print("y_train_reg after cleaning and filling:", y_train_reg.head())""")
+
+    st.write("y_train_reg after cleaning and filling:", y_train_reg.head())
+
+    st.markdown("""
+
+This code defines a function extract_numeric that targets the sales volume data in y_train_reg. It converts the sales volume from string format (if applicable) to numeric by extracting the first number found in each entry. After applying this function, it checks for any NaN values in y_train_reg and fills them with the median of the cleaned data. The cleaned data is then displayed for verification, ensuring that the model can be trained without missing values.     
+    """)
+
 
     st.subheader("Training the Random Forest Regressor model")
     rfr_model = RandomForestRegressor(random_state=42)  # Model definition
@@ -555,6 +597,8 @@ elif st.session_state.page_selection == "machine_learning":
     # Display Feature Importance
     st.subheader("Feature Importance")
     st.bar_chart(feature_importance)
+
+
 
 
     
