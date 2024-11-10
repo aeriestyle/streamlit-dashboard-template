@@ -567,6 +567,7 @@ This code defines a function extract_numeric that targets the sales volume data 
     st.code("""
     train_accuracy = rfr_model.score(X_train_reg, y_train_reg)  # Train data R^2 score
     test_accuracy = rfr_model.score(X_test_reg, y_test_reg)    # Test data R^2 score
+            
     # Apply the extract_numeric function to clean y_test_reg
     y_test_reg = y_test_reg.apply(extract_numeric)
 
@@ -591,9 +592,16 @@ This code defines a function extract_numeric that targets the sales volume data 
      
     """)
 
-    # Feature Importance
+    st.code("""
+#Feature Importance
+
+random_forest_feature_importance = pd.Series(rfr_model.feature_importances_, index=X_train_reg.columns)
+
+random_forest_feature_importance
+""")
     feature_importance = pd.Series(rfr_model.feature_importances_, index=X_train_reg.columns)
-    
+
+    st.write(feature_importance)
     # Display Feature Importance
     st.subheader("Feature Importance")
     st.bar_chart(feature_importance)
