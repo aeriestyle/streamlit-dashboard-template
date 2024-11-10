@@ -508,6 +508,7 @@ elif st.session_state.page_selection == "machine_learning":
     y_train_reg = st.session_state.get['5y_train_reg']
     y_test_reg = st.session_state.get['y_test_reg']
 
+    if all(data is not None for data in [X_train_class, X_test_class, y_train_class, y_test_class]):
 
     st.subheader("Training the Random Forest Regressor model")
     rfr_model = RandomForestRegressor(random_state=42)  # Model definition
