@@ -503,10 +503,10 @@ elif st.session_state.page_selection == "machine_learning":
                 
     """) 
     # Access X and y data for Random Forest regression from session state
-    X_train_reg = st.session_state['X_train_reg']
-    X_test_reg = st.session_state['X_test_reg']
-    y_train_reg = st.session_state['y_train_reg']
-    y_test_reg = st.session_state['y_test_reg']
+    X_train_reg = st.session_state.get['X_train_reg']
+    X_test_reg = st.session_state.get['X_test_reg']
+    y_train_reg = st.session_state.get['5y_train_reg']
+    y_test_reg = st.session_state.get['y_test_reg']
 
 
     st.subheader("Training the Random Forest Regressor model")
