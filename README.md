@@ -1,6 +1,6 @@
 # Predicting Sales and Classifying Data using Streamlit
 
-A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, **Data Pre-processing**, and two supervised classification models: **Logistic Regression** and **Random Forest Regressor** to make predictions on sales volume and classification on new unseen data.
+A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, **Data Preprocessing**, and **Supervised Machine Learning** to predict "Amazon Choice" products and sales volume from the Phone Search Dataset using **Logistic Regression** and **Random Forest Regressor**.
 
 ![Main Page Screenshot](screenshots/main_page_screenshot.png)
 
@@ -22,13 +22,11 @@ A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, *
 
 ### 📖 Pages:
 
-1. `Dataset` - Brief description of the Iris Flower dataset used in this dashboard.
-2. `EDA` - Exploratory Data Analysis of the Amazon Phone Prices, Ratings & Sales dataset. Highlighting the distribution of Iris species and the relationship between the features. Includes graphs such as Pie Chart, Scatter Plots, and Pairwise Scatter Plot Matrix.
-
-   Histogram, Scatter Plot, Pairwise Scatter Plot, and Confusion Matrix. bar plot
-4. `Data Cleaning / Pre-processing` - Data cleaning and pre-processing steps such as encoding the species column and splitting the dataset into training and testing sets.
-5. `Machine Learning` - Training two supervised classification models: Logistic Regression and Random Forest Regressor. Includes model evaluation, feature importance, and tree plot.
-6. `Prediction` - Prediction page where users can input values to predict the Iris species using the trained models.
+1. `Dataset` - A brief description of the Phone Search Dataset used in this dashboard.
+2. `EDA` - Exploratory Data Analysis of the Phone Search Dataset. Highlighting the distribution of features like product price, star rating, and reviews. Includes visualizations such as histograms, scatter plots, pairwise scatter plot matrix.
+4. `Data Cleaning / Pre-processing` - Data cleaning and pre-processing steps including encoding categorical variables, handling missing values, and splitting the dataset into training and testing sets for classification and regression tasks.
+5. `Machine Learning` - Training two supervised models: Logistic Regression for classification of "Amazon Choice" products and Random Forest Regressor for sales volume prediction. Includes model evaluation, feature importance analysis, and tree plot for Random Forest.
+6. `Prediction` - A page where users can input values to predict whether a product is "Amazon Choice" or estimate the sales volume using the trained models.
 7. `Conclusion` - Summary of the insights and observations from the EDA and model training.
 
 ### 💡 Findings / Insights
