@@ -671,8 +671,25 @@ plt.show()
     plt.tight_layout()
     st.pyplot(fig)
 
-    
-    
+    st.markdown("""
+This section visualizes up to 100 decision trees from the Random Forest model in a grid layout. Each tree is plotted individually to showcase its structure and decision rules. This visualization aids in understanding how each tree contributes to the overall model's predictions and the complexity of the ensemble.        
+                         """)
+
+    st.code("""
+
+# Extract and plot a single tree from the Random Forest
+single_tree = rfr_model.estimators_[0]
+plt.figure(figsize=(20, 10))
+plot_tree(single_tree, feature_names=X_train_reg.columns, filled=True, rounded=True)
+plt.show()
+          """)
+    single_tree = rfr_model.estimators_[0]
+    plt.figure(figsize=(20, 10))
+    plot_tree(single_tree, feature_names=X_train_reg.columns, filled=True, rounded=True)
+    plt.show()
+    st.markdown("""
+This Tree Plot shows a single tree from our Random Forest Regressor model.                         """)
+
     
 
 # Prediction Page
