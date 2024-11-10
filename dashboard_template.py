@@ -8,6 +8,7 @@ import plotly.express as px
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
+import joblib
 
 ##
 from sklearn.preprocessing import MinMaxScaler
@@ -695,8 +696,13 @@ This Tree Plot shows a single tree from our Random Forest Regressor model.      
 # Prediction Page
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
+ 
+    # Load the saved models
+    log_reg_model = joblib.load('logistic_regression_model.joblib')
+    rfr_model = joblib.load('random_forest_regressor.joblib')
 
-    # Your content for the PREDICTION page goes here
+   
+
 
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
